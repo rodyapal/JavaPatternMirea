@@ -8,7 +8,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main3 {
 	public static void main(String[] args) {
-//		testList();
+		testList();
 		testMap();
 	}
 
