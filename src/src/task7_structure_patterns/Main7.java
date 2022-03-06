@@ -9,7 +9,7 @@ import task7_structure_patterns.flyweight.FlyweightFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main7 {
 	public static void main(String[] args) {
 		testFlyweight();
 		testComponent();
