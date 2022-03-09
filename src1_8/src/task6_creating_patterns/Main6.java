@@ -32,9 +32,7 @@ public class Main6 {
 				products.add(b.make());
 			}
 		}
-		products.forEach((item) -> {
-			System.out.println(item.name());
-		});
+		products.forEach((item) -> System.out.println(item.name()));
 	}
 
 	private static void testAbstractFactory() {
@@ -48,9 +46,7 @@ public class Main6 {
 				elements.put(two.makeA(), two.makeB());
 			}
 		}
-		elements.forEach((key, value) -> {
-			System.out.println("{\n\tkey: " + key.foo() + "\n\t" + value.bar() + "\n}");
-		});
+		elements.forEach((key, value) -> System.out.println("{\n\tkey: " + key.foo() + "\n\t" + value.bar() + "\n}"));
 	}
 
 	private static void testBuilder() {

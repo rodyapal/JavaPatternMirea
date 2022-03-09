@@ -1,7 +1,7 @@
 package task8_behaviore_patterns.command;
 
 public class NotifyIntent implements Intent {
-	private String data = "";
+	private String data;
 
 	public NotifyIntent(String data) {
 		this.data = data;

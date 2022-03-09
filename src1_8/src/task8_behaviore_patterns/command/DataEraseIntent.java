@@ -1,7 +1,7 @@
 package task8_behaviore_patterns.command;
 
 public class DataEraseIntent implements Intent {
-	private int id = 0;
+	private int id ;
 	private final Object database = null;
 
 	public DataEraseIntent(int id) {

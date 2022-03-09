@@ -10,7 +10,6 @@ import task8_behaviore_patterns.visitor.visitables.Factory;
 import task8_behaviore_patterns.visitor.visitables.IVisitable;
 import task8_behaviore_patterns.visitor.visitables.Residential;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

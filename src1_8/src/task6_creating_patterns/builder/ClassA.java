@@ -7,7 +7,7 @@ public class ClassA {
 	private Integer propertyFour = null;
 
 	public static class Builder {
-		private ClassA buildableInstance = null;
+		private ClassA buildableInstance;
 
 		public Builder() {
 			this.buildableInstance = new ClassA();

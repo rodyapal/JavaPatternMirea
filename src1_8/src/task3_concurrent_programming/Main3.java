@@ -77,9 +77,7 @@ public class Main3 {
 		thread2.start();
 
 		semaphoreMap.forEach(
-				(key, value) -> {
-					System.out.println("k: " + key + "\tv: " + value);
-				}
+				(key, value) -> System.out.println("k: " + key + "\tv: " + value)
 		);
 	}
 }
