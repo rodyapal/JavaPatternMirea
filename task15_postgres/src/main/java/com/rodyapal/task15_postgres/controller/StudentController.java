@@ -1,7 +1,7 @@
 package com.rodyapal.task15_postgres.controller;
 
 import com.rodyapal.task15_postgres.model.Student;
-import com.rodyapal.task15_postgres.model.StudentService;
+import com.rodyapal.task15_postgres.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

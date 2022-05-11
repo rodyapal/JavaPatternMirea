@@ -1,5 +1,7 @@
-package com.rodyapal.task15_postgres.model;
+package com.rodyapal.task15_postgres.service;
 
+import com.rodyapal.task15_postgres.model.Student;
+import com.rodyapal.task15_postgres.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
