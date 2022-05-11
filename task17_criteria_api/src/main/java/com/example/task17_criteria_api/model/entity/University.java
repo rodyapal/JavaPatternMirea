@@ -1,6 +1,5 @@
-package com.example.task17_criteria_api.model.university;
+package com.example.task17_criteria_api.model.entity;
 
-import com.example.task17_criteria_api.model.student.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "universities")
-public class University {
+public class University implements IEntity {
 	@Id
 	@SequenceGenerator(name = "university_sequence", sequenceName = "university_sequence", allocationSize = 1)
 	@GeneratedValue(generator = "university_sequence", strategy = GenerationType.SEQUENCE)

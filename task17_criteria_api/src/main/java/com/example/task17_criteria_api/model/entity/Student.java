@@ -1,6 +1,5 @@
-package com.example.task17_criteria_api.model.student;
+package com.example.task17_criteria_api.model.entity;
 
-import com.example.task17_criteria_api.model.university.University;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -16,7 +15,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "students")
-public class Student {
+public class Student implements IEntity {
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
@@ -29,7 +28,7 @@ public class Student {
 	@GeneratedValue(generator = "student_sequence", strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(
 			name = "university_id",
 			insertable = false,

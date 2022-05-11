@@ -1,8 +1,8 @@
 package com.example.task17_criteria_api.controller;
 
 
-import com.example.task17_criteria_api.model.university.University;
-import com.example.task17_criteria_api.model.university.UniversityService;
+import com.example.task17_criteria_api.model.entity.University;
+import com.example.task17_criteria_api.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +22,7 @@ public class UniversityController {
 	public String getUniversities() {
 		List<University> universities = universityService.getAll();
 		StringBuilder result = new StringBuilder();
-		universities.forEach((it) -> {
-			result.append(it.toString()).append('\n');
-		});
+		universities.forEach((it) -> result.append(it.toString()).append('\n'));
 		return result.length() != 0 ? result.toString() : "No data";
 	}
 
@@ -32,9 +30,7 @@ public class UniversityController {
 	public String getStudentsByFirstName(@PathVariable(name = "name") String name) {
 		List<University> students = universityService.getByName(name);
 		StringBuilder result = new StringBuilder();
-		students.forEach((it) -> {
-			result.append(it.toString()).append("\n");
-		});
+		students.forEach((it) -> result.append(it.toString()).append("\n"));
 		System.out.println(result);
 		return result.length() != 0 ? result.toString() : "No data";
 	}
@@ -43,9 +39,7 @@ public class UniversityController {
 	public String getStudentsByLastName(@PathVariable(name = "date") String date) {
 		List<University> students = universityService.getByDate(date);
 		StringBuilder result = new StringBuilder();
-		students.forEach((it) -> {
-			result.append(it.toString()).append('\n');
-		});
+		students.forEach((it) -> result.append(it.toString()).append('\n'));
 		return result.length() != 0 ? result.toString() : "No data";
 	}
 
