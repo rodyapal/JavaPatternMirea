@@ -1,5 +1,6 @@
 package com.example.task17_criteria_api.model.student;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +13,13 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
-public class StudentDAO {
+@Slf4j
+public class StudentService {
 	private final EntityManager entityManager;
 	private final StudentRepository repository;
 
 	@Autowired
-	public StudentDAO(
+	public StudentService(
 			StudentRepository repository,
 			EntityManager entityManager
 	) {
@@ -26,18 +28,22 @@ public class StudentDAO {
 	}
 
 	public List<Student> getAll() {
+		log.info("All students requested");
 		return (List<Student>) repository.findAll();
 	}
 
 	public void save(Student student) {
+		log.info("Student saved: {}", student.toString());
 		repository.save(student);
 	}
 
 	public void delete(Student student) {
+		log.info("Student deleted: {}", student.toString());
 		repository.delete(student);
 	}
 
 	public List<Student> getByFirstName(String firstName) {
+		log.info("Student requested by first name: {}", firstName);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
@@ -51,6 +57,7 @@ public class StudentDAO {
 	}
 
 	public List<Student> getByLastName(String lastName) {
+		log.info("Student requested by last name: {}", lastName);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
@@ -64,6 +71,7 @@ public class StudentDAO {
 	}
 
 	public List<Student> getByMiddleName(String middleName) {
+		log.info("Student requested by middle name: {}", middleName);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
@@ -77,6 +85,7 @@ public class StudentDAO {
 	}
 
 	public List<Student> getByUniversityName(Integer universityId) {
+		log.info("Student requested by university id: {}", universityId);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);

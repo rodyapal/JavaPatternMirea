@@ -1,6 +1,6 @@
 package com.example.task17_criteria_api.model.university;
 
-import com.example.task17_criteria_api.model.student.Student;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,29 +13,34 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
-public class UniversityDAO {
+@Slf4j
+public class UniversityService {
 	private final EntityManager entityManager;
 	private final UniversityRepository repository;
 
 	@Autowired
-	public UniversityDAO(UniversityRepository repository, EntityManager entityManager) {
+	public UniversityService(UniversityRepository repository, EntityManager entityManager) {
 		this.repository = repository;
 		this.entityManager = entityManager;
 	}
 
 	public List<University> getAll() {
+		log.info("All universities requested");
 		return (List<University>) repository.findAll();
 	}
 
 	public void save(University university) {
+		log.info("University saved: {}", university.toString());
 		repository.save(university);
 	}
 
 	public void delete(University university) {
+		log.info("University deleted: {}", university.toString());
 		repository.delete(university);
 	}
 
 	public List<University> getByName(String name) {
+		log.info("University requested by name: {}", name);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<University> criteriaQuery = builder.createQuery(University.class);
@@ -49,6 +54,7 @@ public class UniversityDAO {
 	}
 
 	public List<University> getByDate(String creationDate) {
+		log.info("University requested by creation date: {}", creationDate);
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<University> criteriaQuery = builder.createQuery(University.class);

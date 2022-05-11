@@ -1,7 +1,7 @@
 package com.example.task17_criteria_api.controller;
 
 import com.example.task17_criteria_api.model.student.Student;
-import com.example.task17_criteria_api.model.student.StudentDAO;
+import com.example.task17_criteria_api.model.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,16 +9,16 @@ import java.util.List;
 
 @RestController
 public class StudentController {
-	private final StudentDAO studentDAO;
+	private final StudentService studentService;
 
 	@Autowired
-	public StudentController(StudentDAO studentDAO) {
-		this.studentDAO = studentDAO;
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
 	}
 
 	@GetMapping("/students")
 	public String getStudents() {
-		List<Student> students = studentDAO.getAll();
+		List<Student> students = studentService.getAll();
 		StringBuilder result = new StringBuilder();
 		for (Student student : students) {
 			result.append(student).append("\n");
@@ -29,7 +29,7 @@ public class StudentController {
 
 	@GetMapping("/students/firstName/{firstName}")
 	public String getStudentsByFirstName(@PathVariable(name = "firstName") String firstName) {
-		List<Student> students = studentDAO.getByFirstName(firstName);
+		List<Student> students = studentService.getByFirstName(firstName);
 		StringBuilder result = new StringBuilder();
 		students.forEach((it) -> {
 			result.append(it.toString()).append("\n");
@@ -40,7 +40,7 @@ public class StudentController {
 
 	@GetMapping("/students/lastName/{lastName}")
 	public String getStudentsByLastName(@PathVariable(name = "lastName") String lastName) {
-		List<Student> students = studentDAO.getByLastName(lastName);
+		List<Student> students = studentService.getByLastName(lastName);
 		StringBuilder result = new StringBuilder();
 		students.forEach((it) -> {
 			result.append(it.toString()).append('\n');
@@ -50,7 +50,7 @@ public class StudentController {
 
 	@GetMapping("/students/middleName/{middleName}")
 	public String getStudentsByMiddleName(@PathVariable(name = "middleName") String middleName) {
-		List<Student> students = studentDAO.getByMiddleName(middleName);
+		List<Student> students = studentService.getByMiddleName(middleName);
 		StringBuilder result = new StringBuilder();
 		students.forEach((it) -> {
 			result.append(it.toString()).append('\n');
@@ -60,11 +60,11 @@ public class StudentController {
 
 	@PostMapping("/students")
 	public void addStudent(@RequestBody Student student) {
-		studentDAO.save(student);
+		studentService.save(student);
 	}
 
 	@DeleteMapping("/students")
 	public void deleteStudent(@RequestBody Student student) {
-		studentDAO.delete(student);
+		studentService.delete(student);
 	}
 }

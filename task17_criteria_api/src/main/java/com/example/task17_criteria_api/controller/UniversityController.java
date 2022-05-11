@@ -1,9 +1,8 @@
 package com.example.task17_criteria_api.controller;
 
 
-import com.example.task17_criteria_api.model.student.Student;
 import com.example.task17_criteria_api.model.university.University;
-import com.example.task17_criteria_api.model.university.UniversityDAO;
+import com.example.task17_criteria_api.model.university.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +11,16 @@ import java.util.List;
 @RestController
 public class UniversityController {
 
-	private final UniversityDAO universityDAO;
+	private final UniversityService universityService;
 
 	@Autowired
-	public UniversityController(UniversityDAO universityDAO) {
-		this.universityDAO = universityDAO;
+	public UniversityController(UniversityService universityService) {
+		this.universityService = universityService;
 	}
 
 	@GetMapping("universities")
 	public String getUniversities() {
-		List<University> universities = universityDAO.getAll();
+		List<University> universities = universityService.getAll();
 		StringBuilder result = new StringBuilder();
 		universities.forEach((it) -> {
 			result.append(it.toString()).append('\n');
@@ -31,7 +30,7 @@ public class UniversityController {
 
 	@GetMapping("/universities/name/{name}")
 	public String getStudentsByFirstName(@PathVariable(name = "name") String name) {
-		List<University> students = universityDAO.getByName(name);
+		List<University> students = universityService.getByName(name);
 		StringBuilder result = new StringBuilder();
 		students.forEach((it) -> {
 			result.append(it.toString()).append("\n");
@@ -42,7 +41,7 @@ public class UniversityController {
 
 	@GetMapping("/universities/date/{date}")
 	public String getStudentsByLastName(@PathVariable(name = "date") String date) {
-		List<University> students = universityDAO.getByDate(date);
+		List<University> students = universityService.getByDate(date);
 		StringBuilder result = new StringBuilder();
 		students.forEach((it) -> {
 			result.append(it.toString()).append('\n');
@@ -52,11 +51,11 @@ public class UniversityController {
 
 	@PostMapping("universities")
 	public void addUniversity(@RequestBody University university) {
-		universityDAO.save(university);
+		universityService.save(university);
 	}
 
 	@DeleteMapping("universities")
 	public void deleteUniversity(@RequestBody University university) {
-		universityDAO.delete(university);
+		universityService.delete(university);
 	}
 }
