@@ -42,7 +42,7 @@ public class StudentService {
 	@Transactional
 	public void save(Student student) {
 		log.info("Student saved: {}", student.toString());
-//		emailService.sendNotification(student);
+		emailService.sendNotification(student);
 		repository.save(student);
 	}
 

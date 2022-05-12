@@ -14,28 +14,28 @@ import java.time.format.FormatStyle;
 
 @Service
 public class EmailService {
-//	private final String EMAIL = "EMAIL GOES HERE";
-//	private final JavaMailSender javaMailSender;
-//
-//	@Autowired
-//	public EmailService(JavaMailSenderImpl javaMailSender) {
-//		this.javaMailSender = javaMailSender;
-//	}
-//
-//	@Async
-//	public void sendNotification(Object o) throws MailException {
-//
-//		System.out.println("Sending email...");
-//
-//		SimpleMailMessage mail = new SimpleMailMessage();
-//		mail.setTo(EMAIL);
-//		mail.setFrom(EMAIL);
-//		mail.setSubject("Save new " + o.getClass().getSimpleName() + " at " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
-//				.format(LocalDateTime.now()));
-//		mail.setText(o.toString());
-//
-//		javaMailSender.send(mail);
-//
-//		System.out.println("Email Sent!");
-//	}
+	private final String EMAIL = "grisha.omegon@yandex.ru";
+	private final JavaMailSender javaMailSender;
+
+	@Autowired
+	public EmailService(JavaMailSenderImpl javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
+
+	@Async
+	public void sendNotification(Object o) throws MailException {
+
+		System.out.println("Sending email...");
+
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(EMAIL);
+		mail.setFrom(EMAIL);
+		mail.setSubject("Save new " + o.getClass().getSimpleName() + " at " + DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
+				.format(LocalDateTime.now()));
+		mail.setText(o.toString());
+
+		javaMailSender.send(mail);
+
+		System.out.println("Email Sent!");
+	}
 }
