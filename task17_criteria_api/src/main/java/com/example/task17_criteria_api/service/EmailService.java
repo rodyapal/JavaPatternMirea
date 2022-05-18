@@ -1,5 +1,6 @@
 package com.example.task17_criteria_api.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 @Service
+@Slf4j
 public class EmailService {
 	private final String EMAIL = "grisha.omegon@yandex.ru";
 	private final JavaMailSender javaMailSender;
@@ -24,9 +26,7 @@ public class EmailService {
 
 	@Async
 	public void sendNotification(Object o) throws MailException {
-
-		System.out.println("Sending email...");
-
+		log.info("Sending email");
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(EMAIL);
 		mail.setFrom(EMAIL);
@@ -35,7 +35,6 @@ public class EmailService {
 		mail.setText(o.toString());
 
 		javaMailSender.send(mail);
-
-		System.out.println("Email Sent!");
+		log.info("Email sent");
 	}
 }

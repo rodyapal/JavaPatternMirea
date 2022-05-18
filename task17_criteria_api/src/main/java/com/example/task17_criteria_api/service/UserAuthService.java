@@ -31,7 +31,7 @@ public class UserAuthService implements UserDetailsService {
 		return userDetails;
 	}
 
-	public String signUpUser(User user) {
+	public void signUpUser(User user) {
 		boolean userExists = userRepository.findByUsername(user.getUsername()) != null;
 		if (userExists) {
 			throw new IllegalStateException(String.format("User with username %s exists", user.getUsername()));
@@ -41,6 +41,5 @@ public class UserAuthService implements UserDetailsService {
 		user.setPassword(passwordEncoder.encode(password));
 
 		userRepository.save(user);
-		return "login";
 	}
 }
