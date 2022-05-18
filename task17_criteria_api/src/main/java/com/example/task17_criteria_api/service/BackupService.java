@@ -31,7 +31,7 @@ public class BackupService {
 		this.universityService = universityService;
 	}
 
-	@Scheduled(fixedRate = 60000L)
+	@Scheduled(fixedRate = 600000L)
 	public void backupFromDatabase() throws IOException {
 		deleteOldDirectories();
 
